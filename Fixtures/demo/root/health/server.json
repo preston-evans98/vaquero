@@ -1,0 +1,5 @@
+{
+  "machine" : "hetzner-ccx33",
+  "note" : "Agents, archive and bot",
+  "staleAfter" : 120
+}

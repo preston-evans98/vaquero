@@ -1,0 +1,7 @@
+[
+  { "id" : "h1", "channel" : "telegram", "chat" : "Visa application 2024", "sender" : "Owner", "at" : "2024-03-02T10:14:00Z", "text" : "Sent the residence permit forms to the consulate today, with the bank letter and the lease.", "score" : 0.91 },
+  { "id" : "h2", "channel" : "telegram", "chat" : "Visa application 2024", "sender" : "Marta (lawyer)", "at" : "2024-03-09T15:40:00Z", "text" : "The consulate wants an apostille on the company registration. I'll book the notary for Tuesday.", "score" : 0.87 },
+  { "id" : "h3", "channel" : "gmail", "chat" : "Consulate", "sender" : "Consulate", "at" : "2024-04-18T08:00:00Z", "text" : "Your appointment for biometrics is confirmed for 25 April at 09:30.", "score" : 0.82 },
+  { "id" : "h4", "channel" : "slack", "chat" : "#export (company)", "sender" : "Lena", "at" : "2026-10-28T11:05:00Z", "text" : "Rhein Feinkost asked for samples of the 5 L tins and the 750 ml bottles.", "score" : 0.55 },
+  { "id" : "h5", "channel" : "gmail", "chat" : "Rhein Feinkost", "sender" : "Jonas Weber", "at" : "2026-11-09T16:02:00Z", "text" : "We would like 90-day payment terms on the first order.", "score" : 0.5 }
+]

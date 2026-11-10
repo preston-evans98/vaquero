@@ -1,0 +1,9 @@
+{
+  "name" : "investments",
+  "role" : "lead",
+  "area" : "investments",
+  "parent" : "chief-of-staff",
+  "model" : "opus",
+  "workdir" : "/srv/vaquero/sessions/investments",
+  "statusFile" : "areas/investments/status.md"
+}

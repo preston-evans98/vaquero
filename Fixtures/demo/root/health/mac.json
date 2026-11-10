@@ -1,0 +1,5 @@
+{
+  "machine" : "mac-mini-m4",
+  "note" : "Reads iMessage and WhatsApp",
+  "staleAfter" : 120
+}

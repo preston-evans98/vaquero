@@ -1,0 +1,8 @@
+// Lets the control service's user start, stop and restart agent units, and nothing else.
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.systemd1.manage-units" &&
+        subject.user == "vaquero" &&
+        /^vaquero-agent@[a-z0-9-]+\.service$/.test(action.lookup("unit") || "")) {
+        return polkit.Result.YES;
+    }
+});

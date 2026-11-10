@@ -1,0 +1,13 @@
+{
+  "id": "q-1110-kemal",
+  "kind": "draft",
+  "created": "2026-11-10T07:52:00Z",
+  "urgency": "urgent",
+  "lead": "main-business",
+  "channel": "whatsapp",
+  "chat": "Kemal (Aegean Olive Co.)",
+  "sender": "Kemal",
+  "gist": "Offers 2,000 L at €4.10/L and needs an answer by noon",
+  "draft": "Hi Kemal, confirmed: 2,000 L at €4.10/L. Please send the pro forma and we'll pay the deposit today.",
+  "context": "September's order was €4.25/L, so this is 3.5% lower.\nThe freight forwarder has a December slot (Slack, #export, 09:02).\nThe investments lead notes that EUR/TRY moved 3% this week."
+}

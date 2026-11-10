@@ -1,0 +1,20 @@
+# The control service. deploy/install.sh installs this unit.
+# Files the service writes belong to its own group and are not group-writable. It joins the
+# shared group only to reach the folders it shares with the agents.
+[Unit]
+Description=Vaquero control service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=vaquero
+Group=vaquero
+SupplementaryGroups=vaquero-bus
+UMask=0022
+EnvironmentFile=/etc/vaquero/server.env
+ExecStart=/usr/local/bin/vaquero-server
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

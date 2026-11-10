@@ -1,0 +1,17 @@
+# One agent session. The instance name is the agent's name.
+# The control service starts these units when it starts, so they need no [Install] section.
+# Agents write the shared folders through the vaquero-bus group, so their files stay group-writable.
+[Unit]
+Description=Vaquero agent %i
+After=network-online.target vaquero-server.service
+
+[Service]
+User=vaquero-agent
+Group=vaquero-agent
+SupplementaryGroups=vaquero-bus
+UMask=0002
+EnvironmentFile=/etc/vaquero/agent.env
+RuntimeDirectory=vaquero-agent/%i
+ExecStart=/usr/local/bin/vaquero-agent %i
+Restart=always
+RestartSec=10

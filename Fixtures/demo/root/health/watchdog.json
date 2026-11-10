@@ -1,0 +1,5 @@
+{
+  "machine" : "cowork",
+  "note" : "Hourly check from Anthropic's cloud",
+  "staleAfter" : 7200
+}

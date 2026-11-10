@@ -1,0 +1,9 @@
+{
+  "name" : "real-estate",
+  "role" : "lead",
+  "area" : "real-estate",
+  "parent" : "chief-of-staff",
+  "model" : "opus",
+  "workdir" : "/srv/vaquero/sessions/real-estate",
+  "statusFile" : "areas/real-estate/status.md"
+}

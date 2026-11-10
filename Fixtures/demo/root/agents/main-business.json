@@ -1,0 +1,9 @@
+{
+  "name" : "main-business",
+  "role" : "lead",
+  "area" : "main-business",
+  "parent" : "chief-of-staff",
+  "model" : "opus",
+  "workdir" : "/srv/vaquero/sessions/main-business",
+  "statusFile" : "areas/main-business/status.md"
+}

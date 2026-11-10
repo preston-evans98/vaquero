@@ -1,0 +1,7 @@
+{
+  "name": "chief-of-staff",
+  "role": "chiefOfStaff",
+  "model": "opus",
+  "workdir": "/srv/vaquero/sessions/chief-of-staff",
+  "statusFile": "cos/state.md"
+}

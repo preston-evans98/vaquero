@@ -1,0 +1,5 @@
+{
+  "machine" : "hetzner-ccx33",
+  "note" : "Checks every channel each minute",
+  "staleAfter" : 90
+}

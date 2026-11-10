@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "area": "Main business",
+      "lead": "main-business",
+      "match": "Suppliers, buyers, logistics, the accountant and the bank's trade desk"
+    },
+    {
+      "area": "Real estate",
+      "lead": "real-estate",
+      "match": "Property agents, tenants, the notary, and anything about the Lisbon flat"
+    },
+    {
+      "area": "Investments",
+      "lead": "investments",
+      "match": "Fund managers, research newsletters the owner reads, the tax adviser"
+    },
+    {
+      "area": "Personal admin",
+      "lead": "personal",
+      "match": "Family, friends, doctors, bookings and travel"
+    }
+  ]
+}

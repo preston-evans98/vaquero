@@ -1,0 +1,16 @@
+{
+  "channel": "telegram",
+  "chat": "Mom",
+  "created": "2026-11-09T21:16:00Z",
+  "gist": "Held back: message from Mom",
+  "id": "q-1109-mom",
+  "kind": "heldBack",
+  "lead": "personal",
+  "resolution": {
+    "at": "2026-11-09T21:30:00Z",
+    "by": "telegram",
+    "verdict": "ignore",
+    "version": "fixture"
+  },
+  "urgency": "normal"
+}

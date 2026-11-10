@@ -1,0 +1,9 @@
+{
+  "name" : "export-prices",
+  "role" : "project",
+  "area" : "main-business",
+  "parent" : "main-business",
+  "model" : "opus",
+  "workdir" : "/srv/vaquero/sessions/export-prices",
+  "statusFile" : "areas/main-business/projects/export-prices.md"
+}

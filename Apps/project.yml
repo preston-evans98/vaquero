@@ -1,0 +1,58 @@
+name: Vaquero
+options:
+  bundleIdPrefix: org.celestia.vaquero
+  deploymentTarget:
+    macOS: "26.0"
+    iOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  Vaquero:
+    path: ..
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: YES
+    DEVELOPMENT_TEAM: ""
+targets:
+  VaqueroMac:
+    type: application
+    platform: macOS
+    sources: [Mac]
+    dependencies:
+      - package: Vaquero
+        product: VaqueroUI
+    settings:
+      base:
+        PRODUCT_NAME: Vaquero
+        PRODUCT_BUNDLE_IDENTIFIER: org.celestia.vaquero.mac
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+    info:
+      path: Mac/Info.plist
+      properties:
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+  VaqueroiOS:
+    type: application
+    platform: iOS
+    sources: [iOS]
+    dependencies:
+      - package: Vaquero
+        product: VaqueroUI
+    settings:
+      base:
+        PRODUCT_NAME: Vaquero
+        PRODUCT_BUNDLE_IDENTIFIER: org.celestia.vaquero.ios
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+    info:
+      path: iOS/Info.plist
+      properties:
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true

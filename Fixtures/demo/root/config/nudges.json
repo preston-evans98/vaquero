@@ -1,0 +1,11 @@
+{
+  "nudges": [
+    {
+      "everyHours": 24,
+      "goal": "Finish the export price sheet for the German market",
+      "lead": "main-business",
+      "tellOwnerAfterDays": 5
+    }
+  ],
+  "stallDays": 3
+}

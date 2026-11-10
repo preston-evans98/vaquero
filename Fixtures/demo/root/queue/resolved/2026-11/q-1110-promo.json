@@ -1,0 +1,17 @@
+{
+  "channel": "gmail",
+  "chat": "Olive Oil Times",
+  "created": "2026-11-10T07:06:00Z",
+  "draft": "Please unsubscribe me.",
+  "gist": "Promo for a trade fair",
+  "id": "q-1110-promo",
+  "kind": "draft",
+  "lead": "chief-of-staff",
+  "resolution": {
+    "at": "2026-11-10T07:30:00Z",
+    "by": "app",
+    "verdict": "ignore",
+    "version": "fixture"
+  },
+  "urgency": "low"
+}

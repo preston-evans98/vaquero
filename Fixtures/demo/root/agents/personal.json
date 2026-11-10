@@ -1,0 +1,9 @@
+{
+  "name" : "personal",
+  "role" : "lead",
+  "area" : "personal",
+  "parent" : "chief-of-staff",
+  "model" : "opus",
+  "workdir" : "/srv/vaquero/sessions/personal",
+  "statusFile" : "areas/personal/status.md"
+}

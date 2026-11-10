@@ -1,0 +1,13 @@
+{
+  "id": "q-1110-nudge",
+  "kind": "configChange",
+  "created": "2026-11-10T09:05:00Z",
+  "urgency": "low",
+  "lead": "chief-of-staff",
+  "gist": "Add a daily nudge for the investments lead",
+  "advice": "You asked me this morning to push investments every day and to tell you if nothing passes review in a week.",
+  "change": {
+    "file": "nudges",
+    "content": "{\n  \"nudges\": [\n    {\n      \"everyHours\": 24,\n      \"goal\": \"Finish the export price sheet for the German market\",\n      \"lead\": \"main-business\",\n      \"tellOwnerAfterDays\": 5\n    },\n    {\n      \"everyHours\": 24,\n      \"goal\": \"Try the next hypothesis every day\",\n      \"lead\": \"investments\",\n      \"tellOwnerAfterDays\": 7\n    }\n  ],\n  \"stallDays\": 3\n}\n"
+  }
+}

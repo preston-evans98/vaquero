@@ -1,0 +1,99 @@
+#!/bin/sh
+# Runs one agent's Claude Code session and rings its doorbell.
+# vaquero-agent@.service runs this as the agents' user, with the agent's name as the argument.
+#
+# The session runs unattended in a tmux server of its own, with Remote Control on. It may use only
+# the tools in the owner's config/tools.json, and refuses the rest instead of asking.
+#
+# While the session runs, this script watches the agent's inbox. When new mail arrives and the
+# session is idle, it types the doorbell prompt. Claude Code hooks mark the session idle when a turn
+# ends and busy when a prompt arrives. While mail stays unread, it rings again every five minutes,
+# idle or not, so one lost ring never strands the mail.
+set -eu
+
+name=$1
+spec="$VAQUERO_ROOT/agents/$name.json"
+workdir=$(jq -er .workdir "$spec")
+model=$(jq -er .model "$spec")
+fork_of=$(jq -r '.forkOf // empty' "$spec")
+claude=${VAQUERO_CLAUDE:-$HOME/.local/bin/claude}
+
+inbox="$VAQUERO_ROOT/bus/$name/inbox"
+run="$RUNTIME_DIRECTORY"
+socket="$run/tmux"
+idle="$run/idle"
+rung="$run/rung"
+# Transcript.doorbellPrompt in the server hides this exact text from the apps.
+prompt="New mail is waiting. Read your inbox."
+
+# Claude Code names each transcript folder after the working directory.
+# Transcript.folder in the server applies the same rule.
+transcripts() { echo "$HOME/.claude/projects/$(printf '%s' "$1" | sed 's/[^A-Za-z0-9]/-/g')"; }
+own=$(transcripts "$workdir")
+
+mkdir -p "$workdir" "$inbox"
+
+# Accept the folder-trust dialog ahead of time, since nobody is there to answer it.
+# The lock keeps sessions that start together from losing each other's changes.
+(
+    flock 9
+    config="$HOME/.claude.json"
+    [ -s "$config" ] || echo '{}' > "$config"
+    jq --arg dir "$workdir" '.projects[$dir].hasTrustDialogAccepted = true' "$config" > "$config.tmp"
+    mv "$config.tmp" "$config"
+) 9> "$HOME/.claude.json.lock"
+
+{ cat "$VAQUERO_ROOT/config/tools.json" 2>/dev/null || echo '{}'; } | jq --arg idle "$idle" '{
+    permissions: { allow: (.allow // []), deny: (.deny // []) },
+    hooks: {
+        Stop: [{ hooks: [{ type: "command", command: ("touch " + $idle) }] }],
+        UserPromptSubmit: [{ hooks: [{ type: "command", command: ("rm -f " + $idle) }] }]
+    }
+}' > "$run/settings.json"
+
+# Each argument stays one word: tmux runs the command without a shell.
+# VAQUERO_CLAUDE_ARGS comes from the owner's agent.env, so it may hold several words.
+# shellcheck disable=SC2086
+set -- ${VAQUERO_CLAUDE_ARGS:-} --model "$model" --settings "$run/settings.json" \
+    --permission-mode dontAsk --remote-control "$name"
+if ls "$own"/*.jsonl >/dev/null 2>&1; then
+    set -- "$@" --continue
+elif [ -n "$fork_of" ]; then
+    parent_workdir=$(jq -er .workdir "$VAQUERO_ROOT/agents/$fork_of.json")
+    # Transcript names are session ids, so ls output is safe to filter.
+    # shellcheck disable=SC2010
+    parent=$(ls -t "$(transcripts "$parent_workdir")"/*.jsonl 2>/dev/null | grep -v '/agent-' | head -n 1 || true)
+    if [ -n "$parent" ]; then
+        mkdir -p "$own"
+        cp "$parent" "$own/"
+        set -- "$@" --resume "$(basename "$parent" .jsonl)" --fork-session
+    else
+        echo "$fork_of has no session to copy, so $name starts fresh." >&2
+    fi
+fi
+
+rm -f "$idle" "$rung"
+tmux -S "$socket" new-session -d -s main -c "$workdir" -- "$claude" "$@"
+
+ring() {
+    rm -f "$idle"
+    tmux -S "$socket" send-keys -t main -l "$prompt"
+    tmux -S "$socket" send-keys -t main Enter
+    touch "$rung"
+}
+
+# Give the session time to show its prompt before the first ring.
+sleep 5
+touch "$idle"
+while tmux -S "$socket" has-session -t main 2>/dev/null; do
+    if [ -n "$(ls "$inbox")" ]; then
+        if [ ! -e "$rung" ]; then
+            [ -e "$idle" ] && ring
+        elif [ -n "$(find "$rung" -mmin +5)" ]; then
+            ring
+        elif [ -e "$idle" ] && [ -n "$(find "$inbox" -type f -newer "$rung")" ]; then
+            ring
+        fi
+    fi
+    sleep 2
+done

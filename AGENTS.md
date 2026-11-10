@@ -1,0 +1,7 @@
+- This is your codebase. It is not deployed; make fixes freely without worrying about compatibility
+- Aim for maintainability. Code should be DRY. Don't be afraid to refactor to create clean modules and interfaces.
+- Simplicity is your friend. Always ask yourself if you can remove code or specs.
+- In general, prose should avoid unattested n-grams, long-distance dependencies, object relative clauses, stacked noun compounds, denominal verbs, and inanimate subjects with animate verbs. 
+- Always minimize non-local reasoning required for readers, both in prose and in code. Code should be encapsulated, prose should try to keep dependencies simple.
+- Avoid leaking edit history and conversation details into this repository. It should contain a single version of active code and specs.
+- If you're assigned to implement a large feature, spawn a reviewer with a clean context (only the spec and this document) and have it review your changes. Fix its findings as needed, then repeat until the reviewer has no major findings. 

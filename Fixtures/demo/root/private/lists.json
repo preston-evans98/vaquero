@@ -1,0 +1,13 @@
+{
+  "chats" : [
+    { "channel" : "whatsapp", "chat" : "+905321112233", "title" : "Kemal (Aegean Olive Co.)", "list" : "continuous", "strictness" : "light" },
+    { "channel" : "gmail", "chat" : "lisbon-homes.pt", "title" : "Lisbon Homes (agent)", "list" : "continuous", "strictness" : "light" },
+    { "channel" : "telegram", "chat" : "mom", "title" : "Mom", "list" : "continuous", "strictness" : "strict" },
+    { "channel" : "imessage", "chat" : "+351210000000", "title" : "Dr. Silva's office", "list" : "continuous", "strictness" : "normal" },
+    { "channel" : "slack", "chat" : "C04EXPORT", "title" : "#export (company)", "list" : "searchable", "strictness" : "light" },
+    { "channel" : "telegram", "chat" : "visa-group", "title" : "Visa application 2024", "list" : "searchable", "strictness" : "normal" },
+    { "channel" : "gmail", "chat" : "rheinfeinkost.de", "title" : "Rhein Feinkost", "list" : "searchable", "strictness" : "light" },
+    { "channel" : "whatsapp", "chat" : "+351910000001", "title" : "Family group", "list" : "blocked", "strictness" : "strict" },
+    { "channel" : "x", "chat" : "privatebroker", "title" : "Broker DMs", "list" : "blocked", "strictness" : "strict" }
+  ]
+}

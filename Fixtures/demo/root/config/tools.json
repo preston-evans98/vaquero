@@ -1,0 +1,14 @@
+{
+  "allow": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Edit",
+    "Write",
+    "TodoWrite",
+    "mcp__search__query"
+  ],
+  "deny": [
+    "Bash(rm:*)"
+  ]
+}

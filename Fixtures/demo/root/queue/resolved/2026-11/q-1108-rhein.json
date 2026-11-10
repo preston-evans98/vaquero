@@ -1,0 +1,18 @@
+{
+  "channel": "gmail",
+  "chat": "Rhein Feinkost",
+  "created": "2026-11-09T16:05:00Z",
+  "draft": "Thanks Jonas. For a first order we can do 30 days; 60 from the second order on.",
+  "gist": "Wants 90-day terms on a first order",
+  "id": "q-1108-rhein",
+  "kind": "draft",
+  "lead": "export-prices",
+  "resolution": {
+    "at": "2026-11-09T17:10:00Z",
+    "by": "telegram",
+    "text": "Thanks Jonas. For a first order we can do 45 days, and 60 from the second order on.",
+    "verdict": "approve",
+    "version": "fixture"
+  },
+  "urgency": "normal"
+}
